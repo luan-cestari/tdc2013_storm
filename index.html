@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 
@@ -18,10 +17,8 @@
 		<link rel="stylesheet" href="stylesheets/reveal.min.css">
 		<link rel="stylesheet" href="stylesheets/theme/default.css" id="theme">
 
-		<!-- For syntax highlighting -->
 		<link rel="stylesheet" href="stylesheets/zenburn.css">
 
-		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
 		<script>
 			document.write( '<link rel="stylesheet" href="stylesheets/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
 		</script>
@@ -77,40 +74,50 @@
 						<h2>Lambda Architecture</h2>
 					</section>
 					<section>
-						<h2>Historinha..</h2>
-						<p>O que acontece no desenvolvimento das aplicacoes cujo o uso e crescente</p>
+						<h2>Historinha...</h2>
+						<p>O que acontece no desenvolvimento das aplicacoes cujo o uso é crescente</p>
 					</section>
 					<section>
 						<h2>O que acontece [0]</h2>
-						<img src="images/Drawing1.jpg" alt="Aplicacao simple com Bando de Dados" class="fragment roll-in"/>
+						<img src="images/Drawing1.jpg" alt="Aplicação simple com Bando de Dados" class="fragment roll-in"/>
 					</section>
 					<section>
 						<h2>O que acontece [1]</h2>
-						<img src="images/Drawing2.jpg" alt="Aplicacao simple com Bando de Dados e Fila" class="fragment roll-in"/>
+						<img src="images/Drawing2.jpg" alt="Aplicação simple com Bando de Dados e Fila" class="fragment roll-in"/>
 					</section>
 					<section>
 						<h2>O que acontece [last]</h2>
-						<img src="images/Drawing3.jpg" alt="Aplicacao simple com Bando de Dados com shading e Filas" class="fragment roll-in"/>
+						<img src="images/Drawing3.jpg" alt="Aplicação simple com Bando de Dados com sharding e Filas" class="fragment roll-in"/>
 						<aside class="notes">
 							Complexidade aumentando!
-							Necessidade de script para shading/horizontal scaling
+							Necessidade de script para sharding/horizontal scaling
 							Para fazer scale fica ainda mais complexo, com altas chances de ocorrer falhas humanas
-							Mesmo crescendo dessa forma, ainda nao tem arquitetura contra falhas (por exemplo um banco de dados fique fora do ar por falha de network ou disco)
-							Bugs: Se houver um erro em uma das aplicacoes, e para corrigir os dados em todas filas e shades
+							Mesmo crescendo dessa forma, ainda não tem arquitetura contra falhas (por exemplo um banco de dados fique fora do ar por falha de network ou disco)
+							Bugs: Se houver um erro em uma das aplicacoes, e para corrigir os dados em todas filas e shardes
 						</aside>
 					</section>
 					<section>
-						<h2>Go Wrong: A Solution that grown</h2>
+						<h2>O que deu errado:</h2>
+						<ul>
+							<li>Complexidade cada vez maior no desenvolvimento</li>
+							<li>Fault-tolerance e High-Avalability são duvidosas</li>
+							<li>Muita dificuldade de escalabilidade e limitada</li>
+						</ul>
+						<aside class="notes">
+							Isso também se aplica tanto na manutenção (maior chances de ocorrer erros e consumir maior tempo); 
+							como no Fault como algo humana, como um bug ou outras falhas (sendo que backups poderiam não funcionar devido a complexidade, por exemplo) !
+							Scale vertically e scale horizontally
+							Computação na nuvens
+						</aside>
 					</section>
 					<section>
-						<h2>Go Wrong: Wrong Tools/Technoliges</h2>
-						<p>Example of Web Analysis</p>
-						<p>Facebook case</p>
-						<ul>
+						<h2>Case:Facebook</h2>
+						<ul class="fragment roll-in">
 							<li>+1 Billion users</li>
 							<li>+240 Billion photos</li>
 							<li>+1 Trillion connections</li>
 							<li>22% of references of the Internet</li>
+							<li class="fragment roll-in">2012: 300 milhões de uploads de imagens por dia</li>
 						</ul>
 						<aside class="notes">
 Harvard Business Review -> Mudança em um bank o processo batch de emprestimo (load) passou de 96 horas para 4. Ou de martketing q foi de 4.5h p 60 seconds; 2012 2.5 exabyte create a day (e dobra a cada 40 meses). Mais dados cruzam a internet a cada segundo de hj do que havia na internet inteira a 20 anos atras.
@@ -119,8 +126,7 @@ Study: 22 Percent Of Web Pages Reference Facebook - http://allfacebook.com/study
 						</aside>
 					</section>
 					<section>
-						<h2>What usually happens (and goes wrong)</h2>
-						<img src="images/used_p.png"/>
+						<h2>O que é Lambda Architecture</h2>
 					</section>
 					<section>
 						<h2>Batch Layer</h2>
@@ -130,17 +136,31 @@ Study: 22 Percent Of Web Pages Reference Facebook - http://allfacebook.com/study
 					</section>
 					<section>
 						<h2>Speed Layer</h2>
+						<aside class="notes">
+							O salvador! Faz o papel do Batch enquanto o mesmoa inda não processou as novas informações, possibilitando que
+						</aside>
 					</section>
 					<section>
 						<h2>Putting it all together!</h2>
+						<img src="images/Drawing4.jpg" alt="Diagrama resumindo o L.A." class="fragment roll-in"/>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Storm</h2>
 					</section>
 					<section>
-						<h2>Example using JBoss Tusk</h2>
-						<img src="images/today_p.png"/>
+						<h2>Características</h2>
+						<ul>
+							<li>Simple, Flexível e com suporte a diversas linguagens </li>
+							<li>Possui Fault-tolerance</li>
+							<li>Fácilmente escalável</li>
+							<li>Garantia de processamento</li>
+							<li>Transação</li>
+							<li>Rápido</li>
+						</ul>
 						<aside class="notes">
-							Red Hat, Hortonworks and Mirantis  working together on OpenStack API
-							Red Hat integrating with Hadoop http://www.redhat.com/about/news/press-archive/2013/2/red-hat-unveils-big-data-and-open-hybrid-cloud-direction
-							Amazon EC2/Redshift, Hadoop, Spark, Infinispan, MRG, etc
+							Percebam que tudo que dava errado antes, podemos dizer que foi solucionado. O desenvolvimento agora não precisa se preocupar com regras de ambiente e sim com a regra de negócio
 						</aside>
 					</section>
 				</section>
@@ -151,7 +171,12 @@ Study: 22 Percent Of Web Pages Reference Facebook - http://allfacebook.com/study
 						<h3>BY Luan Cestari</h3>
 					</section>
 					<section>
-						<h2>Questions</h2>
+						<h2>Perguntas?</h2>
+					</section>
+					<section>
+						<h2>JBUG</h2>
+						<img src="images/jbugbrasil-logo-300x64.jpg" alt="JBUG Logo"/>
+						<p>https://community.jboss.org/groups/jbug-brasil</p>
 					</section>
 				</section>
 
@@ -185,8 +210,6 @@ Study: 22 Percent Of Web Pages Reference Facebook - http://allfacebook.com/study
 			});
 
 		</script>
-
-		<!-- Everything below this point is unrelated to the slideshow -->
 
 		<div class="share-reveal" style="display: none; position: absolute; bottom: 10px; left: 50%; margin-left: -305px; z-index: 20;">
 			<a href="http://twitter.com/share" class="twitter-share-button" data-text="#TDC2013 - São Paulo - Storm! - @BR_LuanCestari" data-url="http://luan-cestari.github.io/tdc2013_storm/?print-pdf#/" data-count="small" data-related="Luan Cestari"></a>
