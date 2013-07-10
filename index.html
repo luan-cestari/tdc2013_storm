@@ -50,7 +50,7 @@
 					</section>
 					<section>
 						<h2>Luan = lambda nerd: nerd*nerd</h2>
-						<p class="fragment roll-in">Piadinhas</p>
+						<p class="fragment roll-in">^^^ Piadinhas vvv</p>
 						<img width="400" height="400" src="images/joke.jpg" alt="Piada Nerd" class="fragment roll-in"/>
 						<aside class="notes">
 							Piadinhas para quebrar o gelo =)
@@ -77,7 +77,27 @@
 						<h2>Lambda Architecture</h2>
 					</section>
 					<section>
-						<h2>What usually happens (and goes wrong)</h2>
+						<h2>Historinha..</h2>
+						<p>O que acontece no desenvolvimento das aplicacoes cujo o uso e crescente</p>
+					</section>
+					<section>
+						<h2>O que acontece [0]</h2>
+						<img src="images/Drawing1.jpg" alt="Aplicacao simple com Bando de Dados" class="fragment roll-in"/>
+					</section>
+					<section>
+						<h2>O que acontece [1]</h2>
+						<img src="images/Drawing2.jpg" alt="Aplicacao simple com Bando de Dados e Fila" class="fragment roll-in"/>
+					</section>
+					<section>
+						<h2>O que acontece [last]</h2>
+						<img src="images/Drawing3.jpg" alt="Aplicacao simple com Bando de Dados com shading e Filas" class="fragment roll-in"/>
+						<aside class="notes">
+							Complexidade aumentando!
+							Necessidade de script para shading/horizontal scaling
+							Para fazer scale fica ainda mais complexo, com altas chances de ocorrer falhas humanas
+							Mesmo crescendo dessa forma, ainda nao tem arquitetura contra falhas (por exemplo um banco de dados fique fora do ar por falha de network ou disco)
+							Bugs: Se houver um erro em uma das aplicacoes, e para corrigir os dados em todas filas e shades
+						</aside>
 					</section>
 					<section>
 						<h2>Go Wrong: A Solution that grown</h2>
