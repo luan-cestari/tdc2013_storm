@@ -141,7 +141,7 @@ Study: 22 Percent Of Web Pages Reference Facebook - http://allfacebook.com/study
 						</aside>
 					</section>
 					<section>
-						<h2>Putting it all together!</h2>
+						<h2>Somando tudo!</h2>
 						<img src="images/Drawing4.jpg" alt="Diagrama resumindo o L.A." class="fragment roll-in"/>
 					</section>
 				</section>
@@ -157,11 +157,74 @@ Study: 22 Percent Of Web Pages Reference Facebook - http://allfacebook.com/study
 							<li>Fácilmente escalável</li>
 							<li>Garantia de processamento</li>
 							<li>Transação</li>
-							<li>Rápido</li>
+							<li>Rápido/Low latency</li>
 						</ul>
 						<aside class="notes">
 							Percebam que tudo que dava errado antes, podemos dizer que foi solucionado. O desenvolvimento agora não precisa se preocupar com regras de ambiente e sim com a regra de negócio
+							Rapido = resposta em menos de 10 milisegundos (ver http://www.slideshare.net/Attova/low-latency-frameworks )
 						</aside>
+					</section>
+					<section>
+						<h2>Use cases</h2>
+						<ul>
+							<li>Processamento Contínuo e sem burocracia</li>
+							<li>Processamento Distribuído e Paralelismo </li>
+						</ul>
+						<aside class="notes">
+							Para casos de atualizacoes continuas que precisam ser atualizadas e visualizadas em tempo real
+							Burocracia = Geralmente pessoal usa Filas, mas tendo que se preocupar demasiadamente com elas
+							Uso intesivo de CPU
+						</aside>
+					</section>
+					<section>
+						<h2>Evolução</h2>
+						<ul>
+							<li>09/2011 virou Open Source </li>
+							<li>12/2011 v0.6.0, agora usando Kryo</li>
+							<li>02/2012 v0.7.0, transactional topologies</li>
+							<li>08/2012 v0.8.0, LMAX Disruptor</li>
+							<li>??/2013 v0.9.0-wip17 </li>
+						</ul>
+						<aside class="notes">
+							Desempenho 5-10x maior que antes ( na 0.8.0)
+							Storm fez 1M tuples/seg/node no cluster do Twitter
+						</aside>
+					</section>
+					<section>
+						<h2>O que mais ele usa</h2>
+						<ul>
+							<li>ZeroMQ</li>
+							<li>Zookeeper</li>
+							<li>Thrift</li>
+						</ul>
+						<aside class="notes">
+							0MQ = framework de comunicacao e concorrencia para cluster e supercomputadores. Usa Asychroonous IO e etc
+							Zookeeper = Usado para cordenardo e descobrir novos slaves no cluster, alem de ajudar para que nao haja single point failure, os estados do Nimbus e do Supervisors ficam nele (ou em disco)
+							Thrift = Para gerar um framework agnostico de linguagem
+						</aside>
+					</section>
+					<section>
+						<h2>Arquitetura</h2>
+						<img src="images/Drawing5.jpg" alt="Diagrama de implantacao" class="fragment roll-in"/>
+					</section>
+					<section>
+						<h2>Modelo de desenvolvimento</h2>
+						<img src="images/Drawing6.jpg" alt="Diagrama resumindo de componentes para o desenvolvimento" class="fragment roll-in"/>
+					</section>
+					<section>
+						<h2>Desenvolvimento</h2>
+						<ul>
+							<li>Mutiplas linguagens</li>
+							<ul>
+								<li>Clojure</li>
+								<li>Java</li>
+								<li>Ruby (redstorm)</li>
+							</ul>
+							<li>LocalCluster e StormSubmitter</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Demo</h2>
 					</section>
 				</section>
 
@@ -169,14 +232,19 @@ Study: 22 Percent Of Web Pages Reference Facebook - http://allfacebook.com/study
 					<section>
 						<h1>THE END</h1>
 						<h3>BY Luan Cestari</h3>
+						<p>http://superseniordevelopers.blogspot.com.br/</p>
 					</section>
 					<section>
 						<h2>Perguntas?</h2>
 					</section>
 					<section>
-						<h2>JBUG</h2>
 						<img src="images/jbugbrasil-logo-300x64.jpg" alt="JBUG Logo"/>
 						<p>https://community.jboss.org/groups/jbug-brasil</p>
+					</section>
+					<section>
+						<h2>Livros de ref.</h2>
+						<p>Big Data = http://www.manning.com/marz/</p>
+						<p>Storm = http://shop.oreilly.com/product/0636920024835.do</p>
 					</section>
 				</section>
 
